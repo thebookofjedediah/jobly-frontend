@@ -1,10 +1,10 @@
 import React from 'react';
-import Home from './Components/Home'
-import Companies from './Components/Companies'
-import Company from './Components/Company'
-import Jobs from './Components/Jobs'
-import Login from './Components/Login'
-import Profile from './Components/Profile'
+import Home from './components/Home'
+import Companies from './components/Companies'
+import Company from './components/Company'
+import Jobs from './components/Jobs'
+import Login from './components/Login'
+import Profile from './components/Profile'
 
 import { Switch, Route } from "react-router-dom";
 

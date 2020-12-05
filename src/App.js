@@ -1,4 +1,4 @@
-import Nav from './Components/Nav'
+import Nav from './components/Nav'
 import Routes from './Routes';
 
 import './App.css';
