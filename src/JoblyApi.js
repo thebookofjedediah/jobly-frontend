@@ -25,10 +25,26 @@ class JoblyApi {
         throw Array.isArray(message) ? message : [message];
       }
     }
+
+    // Add a request without a token for basic calls to get past the schema
+    static async noTokenReq(endpoint) {
+      console.debug("API Call:", endpoint);
+
+      try {
+        const res =  await axios.get(`http://localhost:3001/${endpoint}`);
+        return res;
+      }
+  
+      catch(err) {
+        console.error("API Error:", err.response);
+        let message = err.response.data.message;
+        throw Array.isArray(message) ? message : [message];
+      }
+    }
   
     static async getCompanies() {
-      let res = await this.request(`companies`);
-      return res.companies;
+      let res = await this.noTokenReq(`companies`);
+      return res.data.companies;
     }
 
     static async getCompany(handle) {

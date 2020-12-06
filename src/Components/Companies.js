@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import CompanyCard from './CompanyCard';
 import JoblyApi from "../JoblyApi";
 
 const Companies = () => {
@@ -11,6 +12,7 @@ const Companies = () => {
             let companies = await JoblyApi.getCompanies();
             setCompanies(companies);
             setIsLoading(false);
+            console.log(companies)
         }
         getCompanies();
     }, []);
@@ -19,7 +21,18 @@ const Companies = () => {
         return <h1>Loading...</h1>
     }
     return (
-    <h1>Found them all</h1>
+        <>
+        {companies.map(company => (
+            <CompanyCard 
+                key={company.handle}
+                name={company.name} 
+                description={company.description} 
+                logo={company.logoUrl}  
+                numEmployees={company.numEmployees}
+                handle={company.handle}
+            />
+        ))}
+        </>
     )
 }
 
