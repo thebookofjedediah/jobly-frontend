@@ -1,10 +1,10 @@
-.CompanyCard {
+.JobCard {
     width: 40%;
     color: #000;
     margin: 1rem;
 }
 
-.CompanyCard:hover {
+.JobCard:hover {
     text-decoration: none;
     color: gray;
 }

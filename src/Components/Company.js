@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import JoblyApi from '../JoblyApi'
-import { Container, Media } from 'reactstrap';
+import { Container } from 'reactstrap';
+import JobCard from './JobCard'
 
 const Company = () => {
 
@@ -27,6 +28,16 @@ const Company = () => {
             <h1>{company.name}</h1>
             <h2>Employees: {company.num_employees}</h2>
             <p>{company.description}</p>
+            <Container>
+                <h3>Current Openings:</h3>
+                {company.jobs.map(job => (
+                <JobCard 
+                    key={job.id}
+                    title={job.title} 
+                    salary={job.salary} 
+                />
+                ))}
+            </Container>
         </Container>
     )
 }
