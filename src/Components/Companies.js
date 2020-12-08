@@ -12,10 +12,17 @@ const Companies = () => {
             let companies = await JoblyApi.getCompanies();
             setCompanies(companies);
             setIsLoading(false);
-            console.log(companies)
+            
         }
         getCompanies();
     }, []);
+
+    useEffect(() => {
+        async function searchCompanies() {
+            let companies = await JoblyApi.searchCompanies();
+            console.log(companies)
+        }
+    }, [])
 
     if (isLoading) {
         return <h1>Loading...</h1>
