@@ -1,12 +1,13 @@
 import React from 'react';
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 import './CompanyCard.css'
 
 const CompanyCard = (props) => {
-    const {name, numEmployees, description} = props;
+    const {handle, name, numEmployees, description} = props;
     return (
-        <div className="CompanyCard">
+        <Link to={`/companies/${handle}`} className="CompanyCard">
             <Card className="CompanyCard-card">
                 {/* <CardImg src={logo} alt={`${name} logo image`} /> */}
                 <CardBody>
@@ -15,7 +16,7 @@ const CompanyCard = (props) => {
                     <CardText>{description}</CardText>
                 </CardBody>
             </Card>
-        </div>
+        </Link>
     )
 }
 

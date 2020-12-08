@@ -1,3 +1,9 @@
-.CompanyCard-card {
+.CompanyCard {
     width: 40%;
+    color: #000;
+}
+
+.CompanyCard:hover {
+    text-decoration: none;
+    color: gray;
 }

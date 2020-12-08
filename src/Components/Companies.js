@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CompanyCard from './CompanyCard';
 import Search from './Search'
 import JoblyApi from "../JoblyApi";
+import { Container } from 'reactstrap';
 
 const Companies = () => {
 
@@ -39,7 +40,7 @@ const Companies = () => {
         return <h1>Loading...</h1>
     }
     return (
-        <>
+        <Container>
         <Search 
             changeHandler={changeHandler} 
             submitHandler={submitHandler} 
@@ -55,7 +56,7 @@ const Companies = () => {
                 handle={company.handle}
             />
         ))}
-        </>
+        </Container>
     )
 }
 
