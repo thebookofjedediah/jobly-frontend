@@ -4,11 +4,12 @@ import Companies from './components/Companies'
 import Company from './components/Company'
 import Jobs from './components/Jobs'
 import Login from './components/Login'
+import Signup from './components/Signup'
 import Profile from './components/Profile'
 
 import { Switch, Route } from "react-router-dom";
 
-const Routes = () => {
+const Routes = ({ setToken }) => {
     return (
         <Switch>
             <Route exact path="/companies">
@@ -21,7 +22,10 @@ const Routes = () => {
                 <Jobs />
             </Route>
             <Route exact path="/login">
-                <Login />
+                <Login setToken={setToken} />
+            </Route>
+            <Route exact path="/signup">
+                <Signup setToken={setToken} />
             </Route>
             <Route exact path="/profile">
                 <Profile />
