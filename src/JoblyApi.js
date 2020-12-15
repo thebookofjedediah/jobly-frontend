@@ -19,7 +19,7 @@ class JoblyApi {
     console.debug("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { Authorization: `Bearer ${LOCAL_TOKEN}` };
+    const headers = { Authorization: `Bearer ${JoblyApi.token}` };
     const params = (method === "get")
         ? data
         : {};
@@ -56,14 +56,17 @@ class JoblyApi {
     let res = await this.request(`users`, data, "post");
     return res.token;
   }
+
+  static async getCurrentUser(username){
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
   
 }
 
 // JoblyApi.token = localStorage.getItem(LOCAL_TOKEN)
 
 // for now, put token ("testuser" / "password" on class)
-JoblyApi.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+JoblyApi.token = "";
 
 export default JoblyApi;

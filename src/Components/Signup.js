@@ -8,9 +8,10 @@ const Signup = ({ setToken }) => {
     let INITIAL_DATA = {
         username: 'jarnold',
         password: 'password',
-        first: 'jed',
-        last: 'arnold',
-        email: 'jarnold910@gmail.com'
+        firstName: 'jed',
+        lastName: 'arnold',
+        email: 'jarnold910@gmail.com',
+        isAdmin: false
     }
 
     const history = useHistory();
@@ -26,15 +27,17 @@ const Signup = ({ setToken }) => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        let token;
+
+        let newToken;
     
         try {
-            token = await JoblyApi.register(formData);
+            newToken = await JoblyApi.register(formData);
         } catch (e) {
             return setFormData(data => ({ ...data }));
         }
     
-        setToken(token);
+        setToken(newToken);
+        console.log(newToken)
         history.push("/jobs");
       }
 
@@ -44,8 +47,8 @@ const Signup = ({ setToken }) => {
             <Form onSubmit={submitHandler}>
                 <Input onChange={changeHandler} value={formData.username} type="text" id="username" name="username" placeholder="username" />
                 <Input onChange={changeHandler} value={formData.password} type="text" id="password" name="password" placeholder="password" />
-                <Input onChange={changeHandler} value={formData.first} type="text" id="first" name="first" placeholder="first name" />
-                <Input onChange={changeHandler} value={formData.last} type="text" id="last" name="last" placeholder="last name" />
+                <Input onChange={changeHandler} value={formData.firstName} type="text" id="firstName" name="firstName" placeholder="first name" />
+                <Input onChange={changeHandler} value={formData.lastName} type="text" id="lastName" name="lastName" placeholder="last name" />
                 <Input onChange={changeHandler} value={formData.email} type="text" id="email" name="email" placeholder="email" />
                 <Button>Submit</Button>
             </Form>

@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import Nav from './components/Nav'
 import Routes from './Routes';
 import JoblyApi from "./JoblyApi";
-import decode from "jsonwebtoken";
+import { decode } from "jsonwebtoken";
 import UserContext from "./context/UserContext";
 import useLocalStorage from './hooks/useLocalStorage';
 
 import './App.css';
 
-export const LOCAL_TOKEN = null;
+export const LOCAL_TOKEN = "jobly-token";
 
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
   useEffect(() => {
     async function getCurrentUser() {
       try {
+        JoblyApi.token = token;
         let { username } = decode(token);
         let currentUser = await JoblyApi.getCurrentUser(username);
         setCurrentUser(currentUser);
@@ -26,6 +27,7 @@ function App() {
       }
     }
     getCurrentUser();
+    console.log(token)
     console.log(currentUser)
   }, [token])
 
@@ -37,8 +39,8 @@ function App() {
   return (
     <div className="App">
       <UserContext.Provider value={{ currentUser, setCurrentUser }}>
-        <h1>current user: {currentUser}</h1>
-        <Nav handleLogOut={handleLogOut}  />
+        <h1>current user: {}</h1>
+        <Nav handleLogOut={handleLogOut} />
         <Routes setToken={setToken} />
       </UserContext.Provider>
     </div>
