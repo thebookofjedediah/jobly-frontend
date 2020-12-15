@@ -15,7 +15,6 @@ const Jobs = () => {
             let jobs = await JoblyApi.getJobs();
             setJobs(jobs);
             setIsLoading(false);
-            console.log(jobs)
         }
         getJobs();
     }, []);
