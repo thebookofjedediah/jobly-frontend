@@ -39,7 +39,6 @@ function App() {
   return (
     <div className="App">
       <UserContext.Provider value={{ currentUser, setCurrentUser }}>
-        <h1>current user: {}</h1>
         <Nav handleLogOut={handleLogOut} />
         <Routes setToken={setToken} />
       </UserContext.Provider>

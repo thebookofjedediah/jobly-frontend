@@ -37,7 +37,7 @@ const Signup = ({ setToken }) => {
     
         setToken(newToken);
         history.push("/jobs");
-      }
+    }
 
     return (
         <Container>
