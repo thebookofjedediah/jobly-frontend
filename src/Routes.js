@@ -6,21 +6,22 @@ import Jobs from './components/Jobs'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Profile from './components/Profile'
+import PrivateRoute from './components/PrivateRoute'
 
 import { Switch, Route } from "react-router-dom";
 
 const Routes = ({ setToken }) => {
     return (
         <Switch>
-            <Route exact path="/companies">
+            <PrivateRoute exact path="/companies">
                 <Companies />
-            </Route>
-            <Route exact path="/companies/:handle">
+            </PrivateRoute>
+            <PrivateRoute exact path="/companies/:handle">
                 <Company />
-            </Route>
-            <Route exact path="/jobs">
+            </PrivateRoute>
+            <PrivateRoute exact path="/jobs">
                 <Jobs />
-            </Route>
+            </PrivateRoute>
             <Route exact path="/login">
                 <Login setToken={setToken} />
             </Route>
