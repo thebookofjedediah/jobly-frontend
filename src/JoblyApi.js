@@ -66,6 +66,11 @@ class JoblyApi {
     return res.user;
   }
   
+  static async saveProfile(username, data) {
+    let res = await this.request(`users/${username}`, data, "patch");
+    return res.user;
+  }
+  
 }
 
 // JoblyApi.token = localStorage.getItem(LOCAL_TOKEN)
