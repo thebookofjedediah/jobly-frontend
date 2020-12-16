@@ -1,5 +1,4 @@
 import axios from "axios";
-import { LOCAL_TOKEN } from "./App"
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 

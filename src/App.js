@@ -21,14 +21,14 @@ function App() {
         JoblyApi.token = token;
         let { username } = decode(token);
         let currentUser = await JoblyApi.getCurrentUser(username);
+        console.log(`Username: ${username}`)
+        console.log(`CurrUser: ${currentUser}`)
         setCurrentUser(currentUser);
       } catch (e) {
         setCurrentUser(null)
       }
     }
     getCurrentUser();
-    console.log(token)
-    console.log(currentUser)
   }, [token])
 
   const handleLogOut = () => {

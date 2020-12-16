@@ -10,8 +10,7 @@ const Signup = ({ setToken }) => {
         password: 'password',
         firstName: 'jed',
         lastName: 'arnold',
-        email: 'jarnold910@gmail.com',
-        isAdmin: false
+        email: 'jarnold910@gmail.com'
     }
 
     const history = useHistory();
