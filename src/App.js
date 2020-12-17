@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Nav from './components/Nav'
+import NavBar from './components/NavBar'
 import Routes from './Routes';
 import JoblyApi from "./JoblyApi";
 import { decode } from "jsonwebtoken";
@@ -21,8 +21,6 @@ function App() {
         JoblyApi.token = token;
         let { username } = decode(token);
         let currentUser = await JoblyApi.getCurrentUser(username);
-        console.log(`Username: ${username}`)
-        console.log(`CurrUser: ${currentUser}`)
         setCurrentUser(currentUser);
       } catch (e) {
         setCurrentUser(null)
@@ -39,7 +37,7 @@ function App() {
   return (
     <div className="App">
       <UserContext.Provider value={{ currentUser, setCurrentUser }}>
-        <Nav handleLogOut={handleLogOut} />
+        <NavBar handleLogOut={handleLogOut} />
         <Routes setToken={setToken} />
       </UserContext.Provider>
     </div>

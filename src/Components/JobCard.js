@@ -9,6 +9,8 @@ const JobCard = (props) => {
     const {title, salary, companyHandle, id, applyHandler, applied} = props;
     const { currentUser } = useContext(UserContext);
 
+    
+
     return (
             <Card className="JobCard-card">
                 <CardBody>
