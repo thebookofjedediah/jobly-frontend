@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext} from 'react';
 import Search from './Search'
 import JoblyApi from "../JoblyApi";
 import JobCard from './JobCard'
 import { Container } from 'reactstrap';
+import UserContext from '../context/UserContext'
 
 const Jobs = () => {
 
     const [jobs, setJobs] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const [formData, setFormData] = useState({ search: ''})
+    const { currentUser } = useContext(UserContext);
+
+    let checkApplied = new Set(currentUser.applications);
 
     useEffect(() => {
         async function getJobs() {
@@ -17,7 +21,7 @@ const Jobs = () => {
             setIsLoading(false);
         }
         getJobs();
-    }, []);
+    }, [jobs]);
 
     const changeHandler = (e) => {
         const { name, value } = e.target;
@@ -60,6 +64,7 @@ const Jobs = () => {
                 salary={job.salary} 
                 companyHandle={job.companyHandle}
                 applyHandler={applyHandler}
+                applied={checkApplied.has(job.id)}
             />
         ))}
         </Container>

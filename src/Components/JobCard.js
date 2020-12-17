@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Card, CardBody, CardTitle, CardSubtitle, Button} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import UserContext from '../context/UserContext'
@@ -6,8 +6,9 @@ import UserContext from '../context/UserContext'
 import './JobCard.css'
 
 const JobCard = (props) => {
-    const {title, salary, companyHandle, id, applyHandler} = props;
+    const {title, salary, companyHandle, id, applyHandler, applied} = props;
     const { currentUser } = useContext(UserContext);
+
     return (
             <Card className="JobCard-card">
                 <CardBody>
@@ -16,7 +17,12 @@ const JobCard = (props) => {
                     </Link>
                     <CardSubtitle tag="h6">Salary: {salary}</CardSubtitle>
                 </CardBody>
-                <Button onClick={() => applyHandler(currentUser.username, id)}>Apply</Button>
+                {applied ? 
+                    (<div>Already Applied!</div>) 
+                    : 
+                    (<Button onClick={() => applyHandler(currentUser.username, id)}>Apply</Button>)
+                
+                }
             </Card>
 
     )
