@@ -34,6 +34,13 @@ const Jobs = () => {
         setFormData({ search: '' });
     }
 
+    async function applyHandler(username, id) {
+        let jobId = id;
+        let message = await JoblyApi.apply(username, jobId);
+        setJobs(j => j.map(job => 
+            job.id === jobId ? { ...job, state: message} : job
+        ));
+    }
 
     if (isLoading) {
         return <h1>Loading...</h1>
@@ -48,9 +55,11 @@ const Jobs = () => {
         {jobs.map(job => (
             <JobCard 
                 key={job.id}
+                id={job.id}
                 title={job.title} 
                 salary={job.salary} 
-                handle={job.company_handle}
+                companyHandle={job.companyHandle}
+                applyHandler={applyHandler}
             />
         ))}
         </Container>

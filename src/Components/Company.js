@@ -15,7 +15,6 @@ const Company = () => {
             let company = await JoblyApi.getCompany(handle);
             setCompany(company);
             setIsLoading(false);
-            console.log(company)
         }
         getCompany();
     }, []);
@@ -35,6 +34,7 @@ const Company = () => {
                     key={job.id}
                     title={job.title} 
                     salary={job.salary} 
+                    companyHandle={company.handle}
                 />
                 ))}
             </Container>
