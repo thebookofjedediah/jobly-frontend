@@ -73,7 +73,9 @@ class JoblyApi {
 
   static async apply(username, id) {
     let res = await this.request(`users/${username}/jobs/${id}`, {}, "post");
-    return res.message;
+    console.log("APPLIED")
+    console.log(res)
+    return res;
   }
   
 }
