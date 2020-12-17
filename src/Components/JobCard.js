@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Card, CardBody, CardTitle, CardSubtitle, Button} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import UserContext from '../context/UserContext'
@@ -8,9 +8,7 @@ import './JobCard.css'
 const JobCard = (props) => {
     const {title, salary, companyHandle, id, applyHandler, applied} = props;
     const { currentUser } = useContext(UserContext);
-
     
-
     return (
             <Card className="JobCard-card">
                 <CardBody>

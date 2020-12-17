@@ -6,8 +6,6 @@ import UserContext from '../context/UserContext';
 const Profile = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
 
-    console.log(currentUser)
-
     const [userForm, setUserForm] = useState({
       firstName: currentUser.firstName || "",
       lastName: currentUser.lastName || "",

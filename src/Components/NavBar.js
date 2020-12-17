@@ -58,7 +58,7 @@ const NavBar = ({handleLogOut}) => {
                             {currentUser.username}
                         </DropdownToggle>
                         <DropdownMenu right>
-                            <DropdownItem tag={Link} to="/profile" onClick={handleLogOut}>
+                            <DropdownItem tag={Link} to="/profile">
                             Profile
                             </DropdownItem>
                             <DropdownItem tag={Link} to="/" onClick={handleLogOut}>
@@ -69,32 +69,9 @@ const NavBar = ({handleLogOut}) => {
                 </Nav>
             </Collapse>
         </Navbar>)
-        
-    
-    
-    
-    
-    
-    
-    
         }
         </>
     )
 }
 
 export default NavBar;
-
-// {!currentUser ? (<div className="Nav">
-// <Link to="/">Home</Link>
-// <Link to="/login">Login</Link>
-// <Link to="/signup">Signup</Link>
-// </div>)
-// :
-// (<div className="Nav">
-// <Link to="/">Home</Link>
-// <Link to="/companies">Companies</Link>
-// <Link to="/jobs">Jobs</Link>
-// <Link to="/profile">Profile</Link>
-// <Link to="/" onClick={handleLogOut}>Logout {currentUser.username}</Link>
-// </div>)
-// }
