@@ -1,10 +1,12 @@
 .JobCard {
-    width: 40%;
-    color: #000;
     margin: 1rem;
 }
 
-.JobCard:hover {
+.JobCard-link {
+    color: #000;
+}
+
+.JobCard-link:hover {
     text-decoration: none;
     color: gray;
 }

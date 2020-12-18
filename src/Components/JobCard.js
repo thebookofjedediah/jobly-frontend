@@ -10,19 +10,18 @@ const JobCard = (props) => {
     const { currentUser } = useContext(UserContext);
     
     return (
-            <Card className="JobCard-card">
+            <Card className="JobCard">
                 <CardBody>
-                    <Link to={`/companies/${companyHandle}`} className="JobCard">
+                    <Link to={`/companies/${companyHandle}`} className="JobCard-link">
                     <CardTitle tag="h2">{title}</CardTitle>
                     </Link>
                     <CardSubtitle tag="h6">Salary: {salary}</CardSubtitle>
-                </CardBody>
-                {applied ? 
+                    {applied ? 
                     (<div>Already Applied!</div>) 
                     : 
                     (<Button onClick={() => applyHandler(currentUser.username, id)}>Apply</Button>)
-                
-                }
+                    }
+                </CardBody>
             </Card>
 
     )
