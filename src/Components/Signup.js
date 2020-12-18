@@ -6,11 +6,11 @@ import { useHistory } from "react-router-dom"
 const Signup = ({ setToken }) => {
 
     let INITIAL_DATA = {
-        username: 'jarnold',
-        password: 'password',
-        firstName: 'jed',
-        lastName: 'arnold',
-        email: 'jarnold910@gmail.com'
+        username: '',
+        password: '',
+        firstName: '',
+        lastName: '',
+        email: ''
     }
 
     const history = useHistory();

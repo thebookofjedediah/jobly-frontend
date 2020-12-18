@@ -6,8 +6,8 @@ import { useHistory } from "react-router-dom"
 const Login = ({ setToken }) => {
 
     let INITIAL_DATA = {
-        username: 'jarnold',
-        password: 'password'
+        username: '',
+        password: ''
     }
 
     const history = useHistory();
