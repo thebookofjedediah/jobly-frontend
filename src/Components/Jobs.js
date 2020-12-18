@@ -44,6 +44,7 @@ const Jobs = () => {
         setJobs(j => j.map(job => 
             job.id === jobId ? { ...job, state: message} : job
         ));
+        currentUser.applications.push(id);
     }
 
     if (isLoading) {

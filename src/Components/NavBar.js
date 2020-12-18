@@ -27,7 +27,7 @@ const NavBar = ({handleLogOut}) => {
     return (
         <>
         {!currentUser ? 
-        (<Navbar color="light" light expand="lg">
+        (<Navbar color="light" light expand="md">
             <NavbarBrand tag={Link} to="/">Jobly</NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
