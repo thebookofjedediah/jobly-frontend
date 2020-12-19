@@ -11,7 +11,6 @@ const Company = () => {
     const [isLoading, setIsLoading] = useState(true);
     const { handle } = useParams();
     const { currentUser } = useContext(UserContext);
-    const [jobs, setJobs] = useState();
     let checkApplied = new Set(currentUser.applications);
 
     useEffect(() => {
@@ -19,17 +18,13 @@ const Company = () => {
             let company = await JoblyApi.getCompany(handle);
             setCompany(company);
             setIsLoading(false);
-            setJobs(company.jobs)
         }
         getCompany();
-    }, []);
+    }, [company]);
 
     async function applyHandler(username, id) {
         let jobId = id;
-        let message = await JoblyApi.apply(username, jobId);
-        setJobs(j => j.map(job => 
-            job.id === jobId ? { ...job, state: message} : job
-        ));
+        await JoblyApi.apply(username, jobId);
         currentUser.applications.push(id);
     }
 

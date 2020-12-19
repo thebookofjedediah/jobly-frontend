@@ -40,10 +40,7 @@ const Jobs = () => {
 
     async function applyHandler(username, id) {
         let jobId = id;
-        let message = await JoblyApi.apply(username, jobId);
-        setJobs(j => j.map(job => 
-            job.id === jobId ? { ...job, state: message} : job
-        ));
+        await JoblyApi.apply(username, jobId);
         currentUser.applications.push(id);
     }
 
