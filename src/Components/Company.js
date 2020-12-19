@@ -11,10 +11,11 @@ const Company = () => {
     const [isLoading, setIsLoading] = useState(true);
     const { handle } = useParams();
     const { currentUser } = useContext(UserContext);
-    let [checkApplied, setCheckApplied] = useState(new Set(currentUser.applications));
+    let [checkApplied, setCheckApplied] = useState();
 
     useEffect(() => {
         async function getCompany() {
+            setCheckApplied(new Set(currentUser.applications))
             let company = await JoblyApi.getCompany(handle);
             setCompany(company);
             setIsLoading(false);

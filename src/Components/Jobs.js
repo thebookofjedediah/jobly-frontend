@@ -12,11 +12,12 @@ const Jobs = () => {
     const [formData, setFormData] = useState({ search: ''})
     const { currentUser } = useContext(UserContext);
 
-    let [checkApplied, setCheckApplied] = useState(new Set(currentUser.applications));
+    let [checkApplied, setCheckApplied] = useState();
 
 
     useEffect(() => {
         async function getJobs() {
+            setCheckApplied(new Set(currentUser.applications))
             let jobs = await JoblyApi.getJobs();
             setJobs(jobs);
             setIsLoading(false);
