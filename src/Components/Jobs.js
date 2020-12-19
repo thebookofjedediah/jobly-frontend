@@ -12,7 +12,8 @@ const Jobs = () => {
     const [formData, setFormData] = useState({ search: ''})
     const { currentUser } = useContext(UserContext);
 
-    let checkApplied = new Set(currentUser.applications);
+    let [checkApplied, setCheckApplied] = useState(new Set(currentUser.applications));
+
 
     useEffect(() => {
         async function getJobs() {
@@ -21,7 +22,7 @@ const Jobs = () => {
             setIsLoading(false);
         }
         getJobs();
-    }, [jobs]);
+    }, []);
 
     const changeHandler = (e) => {
         const { name, value } = e.target;
@@ -36,12 +37,6 @@ const Jobs = () => {
         const searchResults = await JoblyApi.getJobs(formData.search);
         setJobs(searchResults);
         setFormData({ search: '' });
-    }
-
-    async function applyHandler(username, id) {
-        let jobId = id;
-        await JoblyApi.apply(username, jobId);
-        currentUser.applications.push(id);
     }
 
     if (isLoading) {
@@ -61,8 +56,7 @@ const Jobs = () => {
                 title={job.title} 
                 salary={job.salary} 
                 companyHandle={job.companyHandle}
-                applyHandler={applyHandler}
-                applied={checkApplied.has(job.id)}
+                checkApplied={checkApplied}
             />
         ))}
         </Container>

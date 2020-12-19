@@ -11,7 +11,7 @@ const Company = () => {
     const [isLoading, setIsLoading] = useState(true);
     const { handle } = useParams();
     const { currentUser } = useContext(UserContext);
-    let checkApplied = new Set(currentUser.applications);
+    let [checkApplied, setCheckApplied] = useState(new Set(currentUser.applications));
 
     useEffect(() => {
         async function getCompany() {
@@ -20,13 +20,7 @@ const Company = () => {
             setIsLoading(false);
         }
         getCompany();
-    }, [company]);
-
-    async function applyHandler(username, id) {
-        let jobId = id;
-        await JoblyApi.apply(username, jobId);
-        currentUser.applications.push(id);
-    }
+    }, []);
 
     if (isLoading) {
         return <h1>Loading</h1>
@@ -45,8 +39,7 @@ const Company = () => {
                     title={job.title} 
                     salary={job.salary} 
                     companyHandle={company.handle}
-                    applyHandler={applyHandler}
-                    applied={checkApplied.has(job.id)}
+                    checkApplied={checkApplied}
                 />
                 ))}
             </Container>

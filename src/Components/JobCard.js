@@ -1,13 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Card, CardBody, CardTitle, CardSubtitle, Button} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import UserContext from '../context/UserContext'
+import JoblyApi from '../JoblyApi'
 
 import './JobCard.css'
 
 const JobCard = (props) => {
-    const {title, salary, companyHandle, id, applyHandler, applied} = props;
+    const {title, salary, companyHandle, id, checkApplied} = props;
     const { currentUser } = useContext(UserContext);
+    const [applied, setApplied] = useState(checkApplied.has(id))
+
+    async function applyHandler(username, id) {
+        if (applied === true) return;
+        await JoblyApi.apply(username, id);
+        currentUser.applications.push(id)
+        setApplied(true)
+    }
     
     return (
             <Card className="JobCard">
